@@ -67,12 +67,12 @@ int main(int argc, char* argv[]) {
       printf("Read_index: %d\n", *index);
     }
     */
-    
+
 
     while (1) {
       x = read_index(fpkhs, keyHash, index);
       printf("return of read_index: %d\n", x);
-      if (!index) {
+      if (x == -1) {
         break;
       }
       keyHash++;
@@ -88,11 +88,11 @@ int main(int argc, char* argv[]) {
     write_index(fpkhs, i, keyHash);
 
     while (1) {
-      read_index(fpvhs, valHash, index);
-      if (!index) {
+      x = read_index(fpvhs, valHash, index);
+      printf("return of read_index: %d\n", x);
+      if (x == -1) {
         break;
       }
-      printf("%s\n", "CRINGE" );
       valHash++;
       if (valHash == capacity) { //Loop back around to 0 if it reaches capacity
         valHash = 0;
