@@ -43,7 +43,7 @@ int main(int argc, char* argv[]) {
   //int tempIndex;
   int x;
   int i = 0;
-  int *index = malloc(sizeof(int));
+  int ind = 0;
   while (1) {
     //printf("%s\n", "before keyval");
     numreads = read_keyval(fpkv, key, val);
@@ -59,20 +59,16 @@ int main(int argc, char* argv[]) {
 
     //printf("%s\n", "before loop");
 
-    //write_index(fpkhs, 12, 0);
     /*
-    x = read_index(fpkhs, 0, index);
-    printf("%d\n", x);
-    if (index) {
-      printf("Read_index: %d\n", *index);
-    }
+    write_index(fpkhs, 5, 0);
+    read_index(fpkhs, 0, &ind);
+    printf("%d\n", ind);
     */
 
-
     while (1) {
-      x = read_index(fpkhs, keyHash, index);
-      printf("return of read_index: %d\n", x);
-      if (x == -1) {
+      read_index(fpkhs, keyHash, &ind);
+      printf("return of read_index: %d\n", ind);
+      if (ind == -1) {
         break;
       }
       keyHash++;
@@ -88,9 +84,9 @@ int main(int argc, char* argv[]) {
     write_index(fpkhs, i, keyHash);
 
     while (1) {
-      x = read_index(fpvhs, valHash, index);
-      printf("return of read_index: %d\n", x);
-      if (x == -1) {
+      read_index(fpvhs, valHash, &ind);
+      printf("return of read_index: %d\n", ind);
+      if (ind == -1) {
         break;
       }
       valHash++;
