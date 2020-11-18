@@ -1,4 +1,4 @@
-CFLAGS = -std=c99 -g -pedantic -Wall
+CFLAGS = -std=c99 -pedantic -Wall
 CC = gcc
 
 all: buildidx key2val val2key actors bacon1
@@ -40,4 +40,4 @@ bacon1: bacon1.o util.o hashfn.o
 	$(CC) $(CFLAGS) util.o hashfn.o bacon1.o -o bacon1
 
 clean:
-	rm *.o buildidx key2val val2key actors
+	rm *.o buildidx key2val val2key actors bacon1
