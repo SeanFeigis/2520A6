@@ -4,7 +4,7 @@
 #include "util.h"
 #include "hashfn.h"
 
-
+//Functions below are val2key.c and key2val.c adapted to be functions 
 char* val2key(FILE* fpvhs, FILE* fpkv, char* search) {
 
   int capacity = get_capacity(fpvhs);
@@ -87,7 +87,7 @@ char* key2val(FILE* fpkhs, FILE* fpkv, char* search) {
 
 int main(int argc, char* argv[]) {
 
-
+    //open all files
     FILE* fptbvhs = fopen("title.basics.vhs", "rb");
     FILE* fpnbkhs = fopen("name.basics.khs", "rb");
     FILE* fptbkv = fopen("title.basics.kv", "rb");
@@ -100,24 +100,24 @@ int main(int argc, char* argv[]) {
     char* title = argv[1];
     char* titleKey = NULL;
     int numreads = 1;
-    titleKey = val2key(fptbvhs, fptbkv, title);
+    titleKey = val2key(fptbvhs, fptbkv, title); //get the key of the movie
     //printf("TITLE KEY: %s\n", titleKey);
 
     int i = 0;
     while (1) {
-      numreads = read_key(fptpkv, i, key);
-      if (numreads != 1) {
+      numreads = read_key(fptpkv, i, key); //read the key of each entry
+      if (numreads != 1) { //end of file check
         break;
       }
-      if (strcmp(titleKey, key) == 0) {
-        read_val(fptpkv, i, val);
-        actorName = key2val(fpnbkhs, fpnbkv, val);
-        printf("%s\n", actorName);
-        free(actorName);
+      if (strcmp(titleKey, key) == 0) { //if the key of the movie matches current movie
+        read_val(fptpkv, i, val); //read the key of the actor
+        actorName = key2val(fpnbkhs, fpnbkv, val); //read the name of the actor
+        printf("%s\n", actorName); //print the actor
+        free(actorName); //free the actor
       }
       i++;
     }
-
+    //free everything
     free(titleKey);
     fclose(fptbkv);
     fclose(fptbvhs);

@@ -11,7 +11,7 @@ int main(int argc, char* argv[]) {
     fprintf( stderr, "Usage: %s filename.kv 'search term'\n", argv[0]);
     exit(0);
   }
-
+  //file stuff
   char* file = argv[1];
   char* search = argv[2];
   char otherFile[30] = "";
@@ -30,22 +30,21 @@ int main(int argc, char* argv[]) {
   char key[256] = "";
   char val[256] = "";
   int keyHash;
-  keyHash = hashfn(search, capacity);
+  keyHash = hashfn(search, capacity); //get the hash value of the search term
   int og_keyHash = keyHash;
   int* index = malloc(sizeof(int));
 
 
   while (1) {
 
-    read_index(fpkhs, keyHash, index);
-    read_key(fpkv, *index, key);
-
-    if (!strcmp(search, key)) {
+    read_index(fpkhs, keyHash, index); //read the index
+    read_key(fpkv, *index, key); //read the value of index
+    if (!strcmp(search, key)) { //check for comparison and print if correct
       read_val(fpkv, *index, val);
       printf("%s\n", val);
       break;
     }
-
+    //linear probing
     keyHash++;
 
     if (keyHash == capacity) {
@@ -58,8 +57,10 @@ int main(int argc, char* argv[]) {
     }
 
   }
-
+  //close everything
   fclose(fpkv);
   fclose(fpkhs);
   free(index);
+
+  return(0);
 }

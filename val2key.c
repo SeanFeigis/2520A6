@@ -38,10 +38,9 @@ int main(int argc, char* argv[]) {
 
   while (1) {
 
-    read_index(fpvhs, valHash, index);
-    read_val(fpkv, *index, val);
-
-    if (!strcmp(search, val)) {
+    read_index(fpvhs, valHash, index); //read the index
+    read_val(fpkv, *index, val); //read the value of the index
+    if (!strcmp(search, val)) { //check for comparision and print the key
       read_key(fpkv, *index, key);
       printf("%s\n", key);
       break;
@@ -59,9 +58,11 @@ int main(int argc, char* argv[]) {
     }
 
   }
-
+  //close everything
   fclose(fpkv);
   fclose(fpvhs);
   free(index);
+
+  return(0);
 
 }
