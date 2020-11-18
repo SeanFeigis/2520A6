@@ -31,6 +31,7 @@ int main(int argc, char* argv[]) {
   char val[256] = "";
   int valHash;
   valHash = hashfn(search, capacity);
+  //printf("%d\n", valHash);
   int og_valHash = valHash;
   int* index = malloc(sizeof(int));
 

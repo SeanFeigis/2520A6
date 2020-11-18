@@ -22,14 +22,14 @@ int main(int argc, char* argv[]) {
   FILE *fpkhs;
   strncpy(otherFile, file, strlen(file)-2);
   strcat(otherFile, "khs");
-  printf("%s\n", otherFile);
+  //printf("%s\n", otherFile);
   fpkhs = fopen(otherFile , "wb");
 
 
   FILE *fpvhs;
   strncpy(otherFile2, file, strlen(file)-2);
   strcat(otherFile2, "vhs");
-  printf("%s\n", otherFile2);
+  //printf("%s\n", otherFile2);
   fpvhs = fopen(otherFile2 , "wb");
 
   write_empty(fpkhs, capacity);
@@ -41,16 +41,16 @@ int main(int argc, char* argv[]) {
   int valHash;
   int numreads = 2;
   //int tempIndex;
-  int x;
   int i = 0;
-  int ind = 0;
+  int ind = -1;
+
   while (1) {
     //printf("%s\n", "before keyval");
     numreads = read_keyval(fpkv, key, val);
     if (numreads != 2) {
       break;
     }
-    printf("Key = %s, Val = %s\n", key, val);
+    //printf("Key = %s, Val = %s\n", key, val);
     //printf("%s\n", "before hashfn");
     keyHash = hashfn(key, capacity);
     valHash = hashfn(val, capacity);
@@ -59,15 +59,9 @@ int main(int argc, char* argv[]) {
 
     //printf("%s\n", "before loop");
 
-    /*
-    write_index(fpkhs, 5, 0);
-    read_index(fpkhs, 0, &ind);
-    printf("%d\n", ind);
-    */
-
     while (1) {
       read_index(fpkhs, keyHash, &ind);
-      printf("return of read_index: %d\n", ind);
+      //printf("return of keyHash read_index: %d\n", ind);
       if (ind == -1) {
         break;
       }
@@ -85,7 +79,7 @@ int main(int argc, char* argv[]) {
 
     while (1) {
       read_index(fpvhs, valHash, &ind);
-      printf("return of read_index: %d\n", ind);
+      //printf("return of valHash read_index: %d\n", ind);
       if (ind == -1) {
         break;
       }
@@ -105,6 +99,8 @@ int main(int argc, char* argv[]) {
   fclose(fpkv);
   fclose(fpkhs);
   fclose(fpvhs);
+  free(key);
+  free(val);
 
 
   return(0);

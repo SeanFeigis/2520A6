@@ -25,14 +25,6 @@ int main(int argc, char* argv[]) {
   strcat(otherFile, "khs");
   fpkhs = fopen(otherFile , "rb");
 
-  /*
-  FILE *fpvhs;
-  strncpy(otherFile2, file, strlen(file)-2);
-  strcat(otherFile2, "vhs");
-  printf("%s\n", otherFile2);
-  fpvhs = fopen(otherFile2 , "rb");
-  */
-
   int capacity = get_capacity(fpkhs);
 
   char key[256] = "";
