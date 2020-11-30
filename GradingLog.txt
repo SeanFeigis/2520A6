@@ -1,0 +1,61 @@
+Compiling all executables
+    Found buildidx
+    Found key2val
+    Found val2key
+    Found actors
+    Found bacon1
+Compilation succeeded
+Building indexes
+    ./buildidx tb.kv 10000
+    Found tb.khs
+    Found tb.vhs
+    ./buildidx nb.kv 10000
+    Found nb.khs
+    Found nb.vhs
+    ./buildidx tp.kv 10000
+    Found tp.khs
+    Found tp.vhs
+Compiling and linking gradeA6_buildidx
+Found gradeA6_buildidx
+Compilation succeeded
+buildidx nb.khs 3383 failed
+  '165\n'!='1\n'
+buildidx nb.vhs 1274 failed
+  '1107\n'!='1\n'
+buildidx nb.khs 3384 failed
+  '-1\n'!='165\n'
+buildidx nb.vhs 2559 failed
+  '-1\n'!='249\n'
+buildidx tb.khs 8661 passed
+buildidx tb.vhs 1152 passed
+buildidx tp.khs 8102 failed
+  '1621\n'!='9\n'
+buildidx bp.vhs 294 failed
+  '38\n'!='9\n'
+Compiling and linking key2val
+Found key2val
+Compilation succeeded
+key2val nb.kv nm0000102 passed
+key2val tb.kv tt0100814 passed
+Compiling and linking val2key
+Found val2key
+Compilation succeeded
+val2key nb.kv 'Demi Moore' failed
+  'nm0000196\n'!='nm0000193\n'
+val2key tb.kv 'A Few Good Men' passed
+Compiling and linking actors
+Found actors
+Compilation succeeded
+actors Tremors = Gross failed
+  "Toks Olagundoye\nKevin Bacon\nHunter Parrish\nShiloh Fernandez\nFred Ward\nVincenzo Natali\nAndrew Miller\nAvram 'Butch' Kaplan\nBeth A. Rubino\nEbonee Noel\n"!='Michael Gross\n'
+actors Tremors = Ward passed
+Compiling and linking bacon1
+Found bacon1
+Compilation succeeded
+bacon1 'Michael Gross' passed
+bacon1 'Steve Golin' passed
+Found makefile
+Correct options
+Comments
+Indentation levels are: ['', '  ', '    ', '      ', '        ']
+Assignment submitted by socs <socs@socsvm.local> at: Tue Nov 17 21:33:58 2020
